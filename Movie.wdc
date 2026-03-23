@@ -31,7 +31,7 @@ class :
       
       jsonresult	est une chaîne	= Service.Search(TitreFilm)
       
-      data		est un Variant	= JSONVersVariant(jsonresult)
+      soit data			= JSONVersVariant(jsonresult)
       
       resultats	est une structure
       	titre est une chaîne
@@ -75,6 +75,7 @@ class :
       
       structure_	est une Structure
       	title	est une chaîne
+      	original_title est une chaine
       	poster_path		est une chaine
       	release_date est une date
       	overview est une chaine
@@ -83,6 +84,7 @@ class :
       retour_ est structure_
       
       retour_.title = data.title
+      retour_.original_title = data.original_title
       retour_.poster_path = data.poster_path
       retour_.release_date = data.release_date
       retour_.overview = data.overview

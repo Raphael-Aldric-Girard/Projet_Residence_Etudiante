@@ -207,8 +207,11 @@ window :
         enabled : false
       -
         code : |1+
+         LST_Infos_film.SupprimeTOUT()
+         
          structure_	est une Structure
          	title			est une chaîne
+         	original_title est une chaîne
          	poster_path		est une chaîne
          	release_date	est une Date
          	overview		est une chaîne
@@ -218,9 +221,10 @@ window :
          
          results_ligne_selectionnee = film.SearchMovieByID(titre_film.id_)
          
-         LST_Infos_film.Ajoute("https://image.tmdb.org/t/p/w200" + results_ligne_selectionnee.poster_path)
+         posterpath = "https://image.tmdb.org/t/p/w200" + results_ligne_selectionnee.poster_path
          LST_Infos_film.Ajoute(results_ligne_selectionnee.title)
-         LST_Infos_film.Ajoute(results_ligne_selectionnee.release_date)
+         LST_Infos_film.Ajoute(results_ligne_selectionnee.original_title)
+         LST_Infos_film.Ajoute(dateverschaine(results_ligne_selectionnee.release_date))
          LST_Infos_film.Ajoute(results_ligne_selectionnee.overview)
          
          
@@ -257,7 +261,7 @@ window :
     properties :
      x : 24
      y : 226
-     width : 974
+     width : 753
      height : 310
      accelerator_key : 65535
      tab_order : 3
@@ -286,6 +290,48 @@ window :
       -
         type : 25
         enabled : false
+  -
+    name : posterpath
+    identifier : 0x29c18835014c8e24
+    internal_properties : HwAAAB4AAAAAlFMpDWbEgicO+T2cb8c5Wv84ECmInHTMxItF6VRTX4LmipjVQN3V+mh38sCyK+E5jGSfUc6LuDHChv2N7DEXp81sNTv0rE3ay5rDvqikG9H67zReTLUGX+7LffT+wYycPBNSDE9Tl22Ga2uUzOyz9lhJoG2bShJyljPgb/OYL9CqWXuQnclLb9Drm7EGAK/J2XbsX2XFvpRQ7lmXjH86xJnxBZwTsLTi25TOOnbggkRMF5GX5itd2AYV0xfqUb5FkHU9dzgArZOoSgQWjF2Phg+JnSfXUz961ChdlF80ZCdUySMLXUeGINLDBbz9tix0R7O+VvDsTXjmRNgdPzPcwtZNVZ7AUEty46MEKoUrq4ZSV13gyGoNWDh8sCHPPkzCS3TPDIyCtEkryCpnqs8vTkEhVSKn5N9WNBF86/W5vKGtwgWoRE+x1TeVwPw3fGWXjdxh8FsS+hr5qEuKFMlMyiqy/Yl+mIhXHtkRwDPJgqsZXa5hNRurmYTxBmXtVL0KIu4smUqqKNU7ihIoQIRV+1+wqP2WxjYmSAvWZK4x/DEBskFc6t92Aw9GUnnM56CiQDG0mM26ZKlDSkeJdwrSx6v4OJQTGOSdCMmXiZeGja7I/DDyL0fEvwsoIS3DLjDsC9hp0cTYW9lAmmENRS/0KYuMCY+wbcibJ7OhLsTmvQfClOAWJEEut7qXeLG4m/y67p2MiHhw0MxnxW5d5WbO3dUb797DGcWAXF846yWyg1f9nyQHcLdLdQzDjM76t2KtFCPIeSlqzAA1H5o44Rt04Gu5RzeZzD+qrXxd9ShZWQrfCWZPQ4++gotARrNvco7g761up1juIgg=
+    properties :
+     x : 785
+     y : 226
+     width : 213
+     height : 306
+     tab_stop : 0
+     take_focus : 0
+    style : {}
+    type : 8
+    code_elements :
+     type_code : 8
+     p_codes : []
+  -
+    name : BTN_sauvegarder
+    identifier : 0x29c18b5002e5b123
+    internal_properties : HwAAAB4AAADa8T9SlbCgIa86UwHjv1UvR7VkAKMBwcHCVA52Y25Zgvp2ePlZTQTIo6Avr96ObNpws1QObHX/dwzOfVwia4gUyRLj5l8CYsTVfWOSiIeRuo3Y1v7C0bNOsmaSmxUoS8zGOBy3u8kts0gi0CWerXoEO8MfuVhqJh+pZlYepy4TEOpHJrHGOmWnjYaOXEp95peCzxN4spZ3FqK6MfmtCId5TjAph9DT2bN7aoGdLwa6khRyPxN4WEGcSZD5WYdkyn7VxGNQJbgBSqZMQhVO8xudhU01xFejvyZ316ykqny15P8uEC7YlDgh3wIFpiCKob3PCsJei5l6uuAvEBwkgmELEaBLXOt6kx0bd5MidsUO9HiRgJq7FU8ZPH9+qukAI3HrLSYZWjiYCu/hW+SLetDnFZIpcZrHG2375j+8dUvcS/F+MqOsK4MSTVRtL9tUISTJMc2xrg+Mz1S7KOdU3qiJQbdznFN9EgaPjQ2A1mhVlKA4e3rh09rIv7iKeA7mXffzhDzrWjw809csfKTt7r5SuHr/ViN7KU3yyNyJ5DJ3JrYnPoETQsdT1+vZn370xUwKre3o5lx1VtmJK/Cm6uQlbOdg5GfRthk/i0jG4jvEAQB+fSXCIO22eW9VV3i2khyReF721rfNRIaIcsphT5aWLlbuOHj3LYoH4Q8KKc9Hb9w7M4bgqG/VUOug6EfX9GoL4ULjA8WohpslJOfk6iOdnxL4ZSVGkYX9gtDYhB4cc1iQM3pqpN/w/xM5OxSygXWuL64wFE/BS4dCQNwM+eFa8XbxpyPiCycqi6GPiz4oRPSgS5bl5rlrWvc6SBqpuv5J0SY8YlsG+yyoBmYJ+faZClVxrd+FocNLQsml/1m8O4d2A084iyZJAi4=
+    properties :
+     x : 409
+     y : 652
+     width : 204
+     height : 31
+     accelerator_key : 65535
+     tab_order : 4
+    style : {}
+    type : 4
+    code_elements :
+     type_code : 4
+     p_codes :
+      -
+        code : |1+
+         film.original_title = LST_Infos_film.ValeurAffichée
+         
+         
+         HAjoute(film)
+        type : 18
+      -
+        type : 161
+        enabled : false
  menu :
   name : _Menu
   identifier : 0x292573e513b5f221
@@ -306,7 +352,7 @@ window :
      code : |1+
       PROCEDURE MaFenêtre()
       
-      film est un Movie
+      film_ est un Movie
    -
      code : |1+
       
